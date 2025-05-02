@@ -1,0 +1,175 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #111111;
+}
+
+.main-structure {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.caroussel-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.dots-container {
+    gap: 3px;
+    top: 40px;
+    width: 85%;
+    height: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    box-sizing: border-box;
+    background-color: #0000001c;
+    z-index: 1;
+}
+
+.dots-container .dot {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #ffffff5e;
+    transition: 0.3s;
+}
+
+.dots-container .dot.active {
+    background-color: #ffffff;
+    width: 300%;
+}
+
+.caroussel-container .images-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.caroussel-container .images-container.low-brightness{
+    transition: 0.1s;
+    filter: brightness(0.6);
+}
+
+.caroussel-container .images-container.transition {
+    transition: 0.3s;
+}
+
+.caroussel-container .images-container .img {
+    width: 100%;
+    height: 100%;
+    min-width: 100vw;
+}
+
+.caroussel-container .images-container .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.infos-container {
+    bottom: 0%;
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 60%,rgba(0,0,0,0.9) 100%);
+}
+
+.nomeLocal {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #ededed;
+}
+
+.enderecoLocal {
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: #acacac;
+}
+
+.descricaoLocal {
+    font-size: 1em;
+    max-height: 4.5em;
+    margin-bottom: 15px;
+    -webkit-line-clamp: 2;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    transition: max-height 2s ease;
+    color: #cfcfcf;
+}
+
+.descricaoLocal.expanded{
+    max-height: 1000px;
+    -webkit-line-clamp: unset;
+}
+
+.btnCurtida {
+    gap: 4px;
+    z-index: 1;
+    right: 20px;
+    padding: 8px;
+    bottom: 200px;
+    font-size: 1.8em;
+    border-radius: 50px;
+    width: auto;
+    height: auto;
+    display: flex;
+    cursor: pointer;
+    position: absolute;
+    align-items: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    color: #fbfbfb;
+    background-color: #267603;
+    transition: transform 0.2s ease, color 0.3s ease;
+    box-shadow: 0px 0px 6px -1px #000000;
+}
+.btnCurtida .icon {
+    width: 60%;
+    height: 60%;
+}
+
+.btnCurtida .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.btnCurtida img {
+    width: 12px;
+    object-fit: contain;
+}
+
+.btnCurtida p {
+    max-width: 50px;
+    font-size: 0.4em;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* .btnCurtida:hover {
+    color: red;
+    transform: scale(1.1);
+} */
