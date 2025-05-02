@@ -7,13 +7,13 @@ class carroussel {
     carousselContainer = null; // Container do carrossel
 
     lastTouchX = 0; // Última posição do toque
-    aceleretion = 0; // Aceleração do movimento do dedo
+    aceleration = 0; // Aceleração do movimento do dedo
     imagesCount = 0; // Número de imagens no carrossel
     touchStartX = 0; // Posição inicial do toque
     touchDiff = 0; // Diferença entre o toque inicial e o final
     currentImage = 0; // Imagem atual exibida no carrossel
     touchTimeStamp = 0; // Timestamp do toque inicial
-    minAceleretion = 0.3; // Aceleração mínima para considerar um swipe
+    minAceleretion = 0.2; // Aceleração mínima para considerar um swipe
 
     constructor(carousselContainer, imagesContainer, infosContainer, dotsContainer) {
         this.carousselContainer = carousselContainer;
@@ -62,7 +62,7 @@ class carroussel {
             const lastTouchDiff = this.lastTouchX - touchEndX;
             this.lastTouchX = touchEndX; // Atualiza o valor de lastTouchX para evitar problemas de múltiplos swipes
 
-            this.aceleretion = lastTouchDiff / (event.timeStamp - this.touchTimeStamp); // Aceleração do movimento do dedo
+            this.aceleration = lastTouchDiff / (event.timeStamp - this.touchTimeStamp); // Aceleração do movimento do dedo
             
             this.touchTimeStamp = event.timeStamp;
 
@@ -74,10 +74,10 @@ class carroussel {
     }
 
     touchEnd(event) {
-        if (this.aceleretion > this.minAceleretion || this.touchDiff < -this.carousselContainer.offsetWidth * 0.7) {
+        if (this.aceleration > this.minAceleretion || this.touchDiff < -this.carousselContainer.offsetWidth * 0.7) {
 
             this.nextImage();
-        } else if (this.aceleretion < -this.minAceleretion || this.touchDiff > this.carousselContainer.offsetWidth * 0.7) {
+        } else if (this.aceleration < -this.minAceleretion || this.touchDiff > this.carousselContainer.offsetWidth * 0.7) {
 
             this.previousImage();
         } else {
@@ -87,7 +87,7 @@ class carroussel {
 
         this.touchDiff = 0; // Reseta a diferença de toque para evitar problemas de múltiplos swipes
         this.touchStartX = 0; // Reseta a posição inicial do toque para evitar problemas de múltiplos swipes
-        this.aceleretion = 0; // Reseta a aceleração para evitar problemas de múltiplos swipes
+        this.aceleration = 0; // Reseta a aceleração para evitar problemas de múltiplos swipes
     }
 
     trocarTexto(element) {
