@@ -50,6 +50,17 @@ class carroussel {
             this.navDotsContainer.appendChild(dot);
         });
     }
+    
+    updateDots() {
+        const dots = this.navDotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            if (index === this.currentImage) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
 
     touchControl(event) {
         if (event.type === 'touchmove') {
@@ -93,6 +104,7 @@ class carroussel {
     trocarTexto(element) {
         element.classList.toggle('expanded');
         this.imagesContainer.classList.toggle('low-brightness')
+        this.carousselContainer.querySelector('.btn-qrcode').classList.toggle('text-open')
     }
 
     nextImage() {
@@ -113,7 +125,7 @@ class carroussel {
 
     updateImage(isGoToImage = false) {
 
-        if (this.touchDiff !== 0 || !isGoToImage) {
+        if (this.touchDiff !== 0 || (!isGoToImage && this.touchDiff !== 0)) {
             this.imagesContainer.classList.add('transition'); // Adiciona a classe de transição para suavizar a animação
         }
 
@@ -124,17 +136,6 @@ class carroussel {
         this.currentImage = index;
         this.updateImage(true);
         this.updateDots();
-    }
-
-    updateDots() {
-        const dots = this.navDotsContainer.querySelectorAll('.dot');
-        dots.forEach((dot, index) => {
-            if (index === this.currentImage) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
     }
 }
 
