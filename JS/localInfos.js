@@ -71,6 +71,7 @@ class carroussel {
 
             const touchEndX = event.touches[0].clientX;
             const lastTouchDiff = this.lastTouchX - touchEndX;
+
             this.lastTouchX = touchEndX; // Atualiza o valor de lastTouchX para evitar problemas de múltiplos swipes
 
             this.aceleration = lastTouchDiff / (event.timeStamp - this.touchTimeStamp); // Aceleração do movimento do dedo
@@ -125,7 +126,7 @@ class carroussel {
 
     updateImage(isGoToImage = false) {
 
-        if (this.touchDiff !== 0 || (!isGoToImage && this.touchDiff !== 0)) {
+        if (this.touchDiff !== 0 || isGoToImage) {
             this.imagesContainer.classList.add('transition'); // Adiciona a classe de transição para suavizar a animação
         }
 
